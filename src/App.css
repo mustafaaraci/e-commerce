@@ -1,0 +1,198 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+#root{
+  height: 100vh;
+  
+}
+
+.header{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  
+  
+}
+.header-mid{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  gap: 50px;
+  font-size: xx-large;
+  cursor: pointer;
+  
+  
+  
+}
+
+.header-mid > li{
+  border: solid;
+  border-width: 0.4vh;
+  border-radius: 10px;
+  background-color:rgb(151, 50, 50);
+  color: white;
+  
+ 
+}
+.header-mid>li:hover{
+  transition: color 0.3s ease, transform 0.3s ease;
+  background-color:white;
+  color:rgb(151, 50, 50);
+  transform: scale(1.1);
+
+}
+
+.search-bar > input{
+  border: 2px solid #000; 
+  border-radius: 5px; 
+  padding: 5px; 
+  transition: border-color 0.3s ease; 
+}
+
+input:hover {
+  border-color: rgb(151, 50, 50); 
+}
+
+input:focus {
+  border-color:rgb(151, 50, 50); 
+  outline: none; 
+}
+
+.header-right{
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  
+}
+.product{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+ 
+  
+}
+
+
+.card:hover{
+  transform: scale(1.1);
+  transition: color 0.5s ease, transform 0.5s ease;
+  background-color: white;
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border:1px solid rgb(151, 50, 50);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  padding: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  cursor: pointer;
+}
+
+.card-img-top {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 10px; 
+ 
+}
+
+.card-title {
+  margin: 0; 
+}
+
+.card-text {
+  margin: 0; 
+}
+
+.btn-group>button{
+ margin: 10px;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.btn-sepete-ekle {
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 10px 20px;
+  background-color:  rgb(151, 50, 50); 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  font-size: 16px;
+ 
+}
+
+.btn-sepete-ekle:hover {
+  background-color:  rgb(120, 40, 40) ;
+}
+
+.btn-right-group {
+  display: flex;
+  gap: 10px;
+ 
+}
+
+
+.btn-right {
+  flex-shrink: 0;
+  padding: 5px 10px;
+  background-color: rgb(151, 50, 50); 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-right:hover {
+  background-color: rgb(120, 40, 40); 
+}
+
+.quantity {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: rgb(151, 50, 50);
+  border: 1px solid rgb(151, 50, 50);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+
+
