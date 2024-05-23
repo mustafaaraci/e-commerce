@@ -44,6 +44,7 @@ function Header() {
           </li>
           <li className="search-bar">
             <input type="text" placeholder="Ara.." />
+           
           </li>
           <li>
             <ShoppingBasketIcon />
