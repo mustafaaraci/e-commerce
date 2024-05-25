@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Product({product}) {
     const {id,title,image,price,description,category} =product;
    // console.log(product);
+   
     const [quantity,setQuantity] = useState(1);
     const [totalPrice,setTotalPrice] = useState(price);
+    const navigate = useNavigate();
+
+
+
+
     const increment =()=>{
         if (quantity<5) {
             setQuantity(quantity+1);
@@ -24,6 +31,7 @@ function Product({product}) {
         }
         
     }
+   
   return (
   
   <div className="card">
@@ -33,7 +41,11 @@ function Product({product}) {
     <p className="card-text price-text">{totalPrice}₺</p>
    </div>
    <div className="btn-group">
-        <button className="btn-sepete-ekle">Sepete Ekle</button>
+    <div className="btn-group-item">
+       <button className="btn-sepete-ekle">Sepete Ekle</button>
+        <button className="btn-detay" onClick={()=>navigate("/product-detail/"+id)}>Detay</button>
+    </div>
+       
         <div className="btn-right-group">
           <button className="btn-right" onClick={decrement}>-</button>
           <span className="quantity">{quantity}</span>

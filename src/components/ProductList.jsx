@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../redux/productSlice";
 import Product from "../components/Product";
+import Loading from "./Loading";
 
 
 
@@ -18,6 +19,7 @@ function ProductList() {
     },[])
   return (
     <div className="product">
+       <Loading/>
       {
         products && products.map((product)=>(
           <Product key={product.id} product={product}/>

@@ -1,12 +1,20 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
+import DetailPage from "../pages/DetailPage";
+import Login from "../pages/Login";
+
+
 
 
 function RouterConfig() {
   return (
  <Routes>
     <Route path="/" element = {<Home/>}/>
+    <Route path="/anasayfa" element = {<Home/>}/>
+    <Route path="/product-detail/:id" element = {<DetailPage/>}/>
+    <Route path="/Login" element = {<Login/>}/>
+   
  </Routes>
 )}
 

@@ -7,20 +7,24 @@ body{
 #root{
   height: 100vh;
   
+  
 }
+
 
 .logo:hover{
   transform: scale(1.1);
   transition: color 0.5s ease, transform 0.5s ease;
 }
 
+
+
 .header{
   list-style: none;
   display: flex;
   justify-content: space-between;
-  
-  
+
 }
+
 .header-mid{
   list-style: none;
   display: flex;
@@ -43,7 +47,7 @@ body{
  
 }
 .header-mid>li:hover{
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease;
   background-color:white;
   color:rgb(151, 50, 50);
   transform: scale(1.1);
@@ -83,6 +87,9 @@ input:focus {
   gap: 10px;
  
   
+}
+.product-list{
+  margin-top: 110px;;
 }
 
 
@@ -157,11 +164,40 @@ input:focus {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.5s ease, transform 0.5s ease;
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   
  
+}
+
+.btn-group-item >button{
+  margin-top: 10px; 
+  display: flex;
+  flex-direction: column; 
+  
+
+  
+}
+
+
+.btn-detay{
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 10px 20px;
+  background-color:  rgb(151, 50, 50); 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: color 0.5s ease, transform 0.5s ease;
+  text-align: center;
+  font-size: 12px;
+  width: 102px;
+ 
+}
+.btn-detay:hover{
+  background-color:  rgb(120, 40, 40) ;
 }
 
 .btn-sepete-ekle:hover {
@@ -185,7 +221,7 @@ input:focus {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color 0.5s ease, transform 0.5s ease;
 }
 
 .btn-right:hover {
@@ -217,5 +253,153 @@ input:focus {
   
 }
 
+/* Footer */
+.container-footer {
+  border-radius: 10px;
+  background-color: #c9c6c6;
+  padding: 20px 0;
+  margin-top: 15px;
+  
+}
 
+.social-media-icons {
+  display: flex;
+  justify-content: center;
+}
+.social-media-icons .btn-floating {
+  margin: 0 10px; 
+}
+.social-media-icons a {
+  color: #333;
+  margin: 0 5px;
+  font-size: 24px;
+}
+
+.social-media-icons a:hover {
+  color:  rgb(120, 40, 40); 
+  transform: scale(1.05);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.copyright-text {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  background-color: #c9c6c6;
+  
+}
+
+/* navbar */
+
+.navbar {
+  height: 55px;
+  width: 100%;
+  background-color:white;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+}
+
+.navbar-mid {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.header-mid {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.header-mid li {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+}
+
+.basket-icon:hover{
+  transform: scale(1.05);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+.user-icon:hover{
+  transform: scale(1.1);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+
+.search-bar {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-icon, .night-mode, .light-mode:hover{
+  cursor: pointer;
+  color:black;
+ 
+  
+}
+/* sepet badge */
+.cart-icon-wrapper {
+  position: relative;
+
+}
+
+.cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(202, 83, 83);
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  border: 1px solid rgb(202, 83, 83); 
+  font-weight: bold; 
+  
+}
+
+.login-text {
+  font-size: 16px;
+  color: rgb(151, 50, 50);
+  font-weight: 500;
+  margin-left: 5px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-weight: bold; 
+  
+}
+
+.login-text:hover {
+  color: rgb(120, 40, 40);
+  transform: scale(1.05);
+}
 

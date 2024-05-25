@@ -3,8 +3,13 @@ import ProductList from "../components/ProductList"
 
 function Home() {
   return (
+  <div className="product-list">
+   
+    <ProductList/>
+    
+    
+  </div>
   
-   <ProductList/>
  
   )
 }

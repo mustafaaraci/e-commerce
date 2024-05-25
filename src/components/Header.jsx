@@ -4,10 +4,12 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonIcon from "@mui/icons-material/Person";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlined';
+import { Link } from "react-router-dom";
 
 
 function Header() {
-
+  
+  const [cartCount, setCartCount] = useState(1); // Sepet sayısı için state oluşturma
     const [theme,setTheme] = useState(true);
     const handleChangeMode = ()=>{
         const root =document.getElementById('root');
@@ -21,47 +23,44 @@ function Header() {
         }
 
     }
+    const addToCart = () => {
+      setCartCount(cartCount + 1); // Ürün eklenince sepet sayısını artırma
+    };
   return (
-    <div className="navbar">
-      <ul className="header">
-        <li>
-          <img
+   <div className="navbar">
+    <div className="navbar-content">
+       <Link to="/"> <img
             className="logo"
             src="./src/images/logo.png"
-            style={{ width: 100, height: 100, cursor: "pointer" }}
-          />
-        </li>
+           />
+           </Link>
         <div className="navbar-mid">
-          <ul className="header-mid">
-            <li>Erkek</li>
-            <li>Kadın</li>
-            <li>Outlet Ürünler</li>
-          </ul>
+            <ul className="header-mid">
+                <li>Erkek</li>
+                <li>Kadın</li>
+                <li>Outlet Ürünler</li>
+            </ul>
         </div>
-        <ul className="header-right">
-          <li>
+        <div className="navbar-right">
             <SearchIcon className="search-icon" />
-          </li>
-          <li className="search-bar">
-            <input type="text" placeholder="Ara.." />
-           
-          </li>
-          <li>
-            <ShoppingBasketIcon />
-          </li>
-          <li>
-            <PersonIcon />
-          </li>
-          <li>
-            {
-               theme ?  <NightlightIcon className="night-mode" onClick={handleChangeMode}/> :
-               <WbIncandescentOutlinedIcon className="light-mode" onClick={handleChangeMode}/>
-            }
-            
-          </li>
-        </ul>
-      </ul>
+            <input type="text" placeholder="Ara.." className="search-bar" />
+            <div className="cart-icon-wrapper">
+            <ShoppingBasketIcon className="basket-icon"/>
+            {cartCount > 0 && (
+              <span className="cart-count">{cartCount}</span>
+            )}
+          </div>
+            <PersonIcon className="user-icon"/>
+            <span className="login-text">Giriş Yap</span>
+            {theme ? (
+                <NightlightIcon className="night-mode" onClick={handleChangeMode} />
+            ) : (
+                <WbIncandescentOutlinedIcon className="light-mode" onClick={handleChangeMode} />
+            )}
+        </div>
     </div>
+</div>
+
   );
 }
 
