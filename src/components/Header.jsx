@@ -4,13 +4,16 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonIcon from "@mui/icons-material/Person";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlined';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function Header() {
   
   const [cartCount, setCartCount] = useState(1); // Sepet sayısı için state oluşturma
     const [theme,setTheme] = useState(true);
+    const navigate = useNavigate();
+
+
     const handleChangeMode = ()=>{
         const root =document.getElementById('root');
         setTheme(!theme);
@@ -26,6 +29,7 @@ function Header() {
     const addToCart = () => {
       setCartCount(cartCount + 1); // Ürün eklenince sepet sayısını artırma
     };
+    
   return (
    <div className="navbar">
     <div className="navbar-content">
@@ -42,16 +46,27 @@ function Header() {
             </ul>
         </div>
         <div className="navbar-right">
-            <SearchIcon className="search-icon" />
-            <input type="text" placeholder="Ara.." className="search-bar" />
-            <div className="cart-icon-wrapper">
+    <div className="input-group" style={{ display: "flex", alignItems: "center" }}>
+  <input 
+    type="text" 
+    placeholder="Aradığınız ürün veya markayı yazınız" 
+    className="search-bar" 
+    style={{ width: 300 }} 
+  />
+  <SearchIcon className="search-icon"/>
+</div>
+ <div className="cart-icon-wrapper">
             <ShoppingBasketIcon className="basket-icon"/>
             {cartCount > 0 && (
               <span className="cart-count">{cartCount}</span>
             )}
           </div>
-            <PersonIcon className="user-icon"/>
-            <span className="login-text">Giriş Yap</span>
+          <div className="login-container" onClick={() => navigate("/Login")}>
+  <div className="login-content">
+    <PersonIcon className="user-icon" />
+    <span className="login-text">Giriş Yap</span>
+  </div>
+</div>
             {theme ? (
                 <NightlightIcon className="night-mode" onClick={handleChangeMode} />
             ) : (

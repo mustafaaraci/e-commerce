@@ -54,23 +54,53 @@ body{
 
 }
 
-.search-bar > input{
-  border: 2px solid #000; 
-  border-radius: 5px; 
-  padding: 5px; 
+.input-group{
+  width:400;
+  height:40;
+  background-color: rgb(151, 50, 50);
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
   
 }
-
-input:hover {
-  border-color: rgb(151, 50, 50); 
+.input-group:hover{
   transform: scale(1.05);
   transition: color 0.5s ease, transform 0.5s ease;
+}
+.search-icon{
+  color: white !important;
+ 
 }
 
 input:focus {
   border-color:rgb(151, 50, 50); 
   outline: none; 
 }
+
+/* login icon group */
+.login-container {
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.login-content {
+  display: flex; 
+  align-items: center; 
+
+}
+
+.login-content:hover{
+  transform: scale(1.02);
+  transition: color 0.5s ease, transform 0.5s ease;
+  
+}
+
+.user-icon {
+  margin-right: -5px; 
+}
+
+/* login icon group */
 
 .header-right{
   list-style: none;
@@ -111,7 +141,29 @@ input:focus {
   padding: 10px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   cursor: pointer;
+  position:relative;
+ 
 }
+
+.favorite-icon-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.favorite-icon {
+  cursor: pointer;
+  color: grey;
+  font-size: 30px !important;
+}   
+
+.favorite-icon:hover, .favorite-icon.favorite {
+  color: rgb(219, 50, 50); 
+  transition: color 0.3s ease; 
+}
+ 
+
 
 .card-img-top {
   width: 200px;
@@ -420,41 +472,9 @@ input:focus {
   transform: scale(1.05);
 }
 
-/* login */
-
-.container-fluid {
-  margin-top: 100px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  border-radius: 10px;
-}
-
-.login-card{
- 
-  background-color:black;
-  color: white;
-  border-color: white;
-
-}
 
 
-.form-control {
-  background-color:white;
-  border: 1px solid white;
-  color: white;
-  margin-bottom: 1rem;
-  border-radius: 10px;
-  height: 30px;
-}
 
-.form-control:focus {
-  background-color: white;
-  color:black;
-  
-}
 
 
 

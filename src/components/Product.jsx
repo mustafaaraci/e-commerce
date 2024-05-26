@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 
@@ -10,6 +11,13 @@ function Product({product}) {
     const [quantity,setQuantity] = useState(1);
     const [totalPrice,setTotalPrice] = useState(price);
     const navigate = useNavigate();
+    const [isFavorite, setIsFavorite] = useState(false);
+
+
+
+    const toggleFavorite = () => {
+      setIsFavorite(!isFavorite); 
+    };
 
 
 
@@ -33,8 +41,10 @@ function Product({product}) {
     }
    
   return (
-  
-  <div className="card">
+   <div className="card">
+     <div className="favorite-icon-container" >
+     <FavoriteIcon className={`favorite-icon ${isFavorite ? 'favorite' : 'favorite-icon'}`} onClick={toggleFavorite}/>
+      </div>
      <img src={image} className="card-img-top" style={{width:200,height:200,borderRadius:10}}/>
   <div className="card-body" style={{width:290,height:50}}>
     <h5 className="card-title">{title}</h5>

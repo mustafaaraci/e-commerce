@@ -1,49 +1,61 @@
 import React from 'react';
+import "../css/Login.css";
+import { Link } from 'react-router-dom';
 import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBIcon
-}
-from 'mdb-react-ui-kit';
+    MDBBtn,
+    MDBContainer,
+    MDBRow,
+    MDBCol,
+    MDBCard,
+    MDBCardBody,
+    MDBInput,
+    MDBIcon,
+    MDBCheckbox
+  }
+  from 'mdb-react-ui-kit';
+
 
 function Login() {
 
   return (
+    
     <MDBContainer fluid>
-      <div className='login-card'>
     <MDBRow className='d-flex justify-content-center align-items-center h-100'>
       <MDBCol col='12'>
-
-        <MDBCard className='bg-dark text-white my-5 mx-auto' style={{borderRadius: '1rem', maxWidth: '400px'}}>
-          <MDBCardBody className='p-5 d-flex flex-column align-items-center mx-auto w-100'>
-
-            <h3 className="fw-bold mb-2 text-uppercase">Merhaba,
-Moon’a giriş yap veya hesap oluştur, indirimleri kaçırma!</h3>
-            <p className="text-white-50 mb-5">Lütfen kullanıcı adı ve şifrenizi girin!</p>
-
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Email' id='formControlLg' type='email' size="lg"/>
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' labelClass='text-white' label='Şifre' id='formControlLg' type='password' size="lg"/>
-
-            <p className="small mb-3 pb-lg-2"><a class="text-white-50" href="#!">Şifremi Unuttum?</a></p>
-            <MDBBtn outline className='mx-2 px-5' color='white' size='lg'> Giriş Yap
-              
+        <MDBCard className='bg-white my-5 mx-auto signinpage' style={{borderRadius: '1rem', maxWidth: '500px'}}>
+          <MDBCardBody className='p-5 w-100 d-flex flex-column'>
+  
+            <h2 className="fw-bold mb-2 text-center">Sign in</h2>
+            <p className="text-muted mb-3">Please enter your login and password!</p>
+  
+            <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
+            <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
+  
+            <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' />
+  
+            <MDBBtn size='lg' className="signin-btn">
+              Login
             </MDBBtn>
-            <div>
-              <p className="mb-0">Hesabınız yok mu? <a href="#!" class="text-white-50 fw-bold">Üye ol</a></p>
-
-            </div>
+  
+            <hr className="my-4" />
+  
+            <MDBBtn className="mb-2 w-100 google-btn" size="lg">
+              <MDBIcon fab icon="google" className="mx-2"/>
+              Sign in with Google
+            </MDBBtn>
+  
+            <MDBBtn className="mb-4 w-100 facebook-btn" size="lg">
+              <MDBIcon fab icon="facebook-f" className="mx-2"/>
+              Sign in with Facebook
+            </MDBBtn>
+  
           </MDBCardBody>
         </MDBCard>
-
       </MDBCol>
     </MDBRow>
-    </div>
   </MDBContainer>
+  
+  
   )
 }
 
