@@ -31,9 +31,9 @@ function Header() {
     <div className="navbar-content">
        <Link to="/"> <img
             className="logo"
-            src="./src/images/logo.png"
-           />
-           </Link>
+            src="./src/images/moon.png"
+           style={{width:60,height:60}}/>
+          </Link>
         <div className="navbar-mid">
             <ul className="header-mid">
                 <li>Erkek</li>
