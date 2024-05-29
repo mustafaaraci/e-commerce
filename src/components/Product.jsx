@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useSelector } from "react-redux";
 
 
 
 function Product({product}) {
     const {id,title,image,price,description,category} =product;
    // console.log(product);
-   
+    
     const [quantity,setQuantity] = useState(1);
     const [totalPrice,setTotalPrice] = useState(price);
     const navigate = useNavigate();
@@ -52,7 +53,7 @@ function Product({product}) {
    </div>
    <div className="btn-group">
     <div className="btn-group-item">
-       <button className="btn-sepete-ekle">Sepete Ekle</button>
+       <button className="btn-sepete-ekle" >Sepete Ekle</button>
         <button className="btn-detay" onClick={()=>navigate("/product-detail/"+id)}>Detay</button>
     </div>
        

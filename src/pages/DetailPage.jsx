@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setSelectedProduct } from "../redux/productSlice";
-import Loading from "../components/Loading";
+import {  setSelectedProduct } from "../redux/productSlice";
+import { addProductToCart } from "../redux/cartSlice";
 
 
 
@@ -17,19 +17,26 @@ function DetailPage() {
     const [quantity, setQuantity] = useState(1);
     const [totalPrice,setTotalPrice] = useState(price);
   
+    
 
     useEffect(()=>{
-    getProductById();
-    },[])
+    (getProductById())
+    
+    },[]);
 
-    const getProductById = ()=>{
-  products && products.map((product)=>{
-    if(product.id == id){
-     dispatch(setSelectedProduct(product));
-    }
-  })
-    }
-   
+
+    const  getProductById = () =>{
+        products && products.map((product)=>{
+            if(product.id == id){
+             dispatch(setSelectedProduct(product));
+            }
+          })
+     }
+    
+
+    
+
+
      
     const handleSizeChange = (e) => {
         setSize(e.target.value);
@@ -50,13 +57,22 @@ function DetailPage() {
     };
 
     const handleAddToCart = () => {
-        // Sepete ekleme işlemleri
-        console.log(`Ürün sepete eklendi: ${title}, Beden: ${size}, Adet: ${quantity}`);
+       const payload = {
+        id,
+        title,
+        price,
+        image,
+        description,
+        quantity
+        
+       }
+       dispatch(addProductToCart(payload))
     };
 
-    if (!selectedProduct) {
-        return <div><Loading/></div>;
-    }
+
+   
+
+   
     return (
     <>
    <div className="detail-page">
@@ -89,7 +105,9 @@ function DetailPage() {
         </div>
    </>
   )
-  
+
 }
 
 export default DetailPage;
+
+
