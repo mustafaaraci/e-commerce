@@ -24,14 +24,25 @@ function DetailPage() {
     
     },[]);
 
+    useEffect(() => {
+        setTotalPrice(price * quantity);
+    }, [price, quantity]);
 
-    const  getProductById = () =>{
-        products && products.map((product)=>{
-            if(product.id == id){
-             dispatch(setSelectedProduct(product));
-            }
-          })
-     }
+
+    // const  getProductById = () =>{
+    //     products && products.map((product)=>{
+    //         if(product.id == id){
+    //          dispatch(setSelectedProduct(product));
+    //         }
+    //       })
+    //  }
+
+    const getProductById = () => {
+        const product = products.find((product) => product.id == id);
+        if (product) {
+            dispatch(setSelectedProduct(product));
+        }
+    };
     
 
     
@@ -63,7 +74,8 @@ function DetailPage() {
         price,
         image,
         description,
-        quantity
+        quantity,
+        size
         
        }
        dispatch(addProductToCart(payload))

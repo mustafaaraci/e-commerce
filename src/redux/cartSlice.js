@@ -10,7 +10,8 @@ const getFromCartToStorage  = ()=>{
 
 const initialState = {
     cartProduct:getFromCartToStorage(),
-    drawer:false
+    drawer:false,
+    totalAmount:0
 }
 
 const writeFromCartToStorage = (cart)=>{
@@ -40,11 +41,35 @@ export const cartSlice = createSlice({
  },
  setDrawer:  (state)=>{
     state.drawer = !state.drawer
- }
+ },
+ calculateToCart: (state) => {
+    state.totalAmount = state.cartProduct.reduce(
+      (total, product) => total + product.price * product.quantity,
+      0
+    );
+  },
+  incrementQuantity: (state, action) => {
+    const product = state.cartProduct.find((product) => product.id === action.payload);
+    if (product) {
+        product.quantity += 1;
+        writeFromCartToStorage(state.cartProduct);
+    }
+},
+decrementQuantity: (state, action) => {
+    const product = state.cartProduct.find((product) => product.id === action.payload);
+    if (product && product.quantity > 1) {
+        product.quantity -= 1;
+        writeFromCartToStorage(state.cartProduct);
+    }
+},
+removeProductFromCart: (state, action) => {
+    state.cartProduct = state.cartProduct.filter((product) => product.id !== action.payload);
+    writeFromCartToStorage(state.cartProduct);
+},
         
 
     }
 })
 
-export const {addProductToCart,setDrawer} = cartSlice.actions;
+export const {addProductToCart,setDrawer,calculateToCart,incrementQuantity,decrementQuantity,removeProductFromCart} = cartSlice.actions;
 export default  cartSlice.reducer;

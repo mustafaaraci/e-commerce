@@ -77,7 +77,7 @@ function Header(product) {
   <SearchIcon className="search-icon"/>
 </div>
  <div className="cart-icon-wrapper">
-            <ShoppingBasketIcon className="basket-icon" onClick={()=> dispatch(setDrawer)}/>
+            <ShoppingBasketIcon className="basket-icon" onClick={()=> dispatch(setDrawer())}/>
             { cartProduct.length > 0 && (
               <span className="cart-count">{cartProduct.length}</span>
             )}

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from "react-redux";
 
