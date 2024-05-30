@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { calculateToCart, setDrawer,incrementQuantity,
      decrementQuantity, removeProductFromCart } from "../redux/cartSlice";
 import "../css/CardPage.css";  
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 
 function CardPage() {
   const { cartProduct, drawer,totalAmount } = useSelector((store) => store.cart);
@@ -18,16 +19,16 @@ function CardPage() {
       <div className="cart-container">
         <h2 className="cart-title">Sepetim</h2>
         {cartProduct.length === 0 ? (
-          <p className="empty-cart">Sepette ürününüz bulunmamaktadır</p>
-        ) : (
+          <p className="empty-cart">Sepette ürününüz bulunmamaktadır <RemoveShoppingCartIcon/></p>
+         ) : (
           cartProduct.map((product) => (
             <div key={product.id} className="cart-item">
               <img src={product.image} alt="" className="cart-item-image" />
               <div className="cart-item-details">
                 <p className="cart-item-title">{product.title} ({product.quantity} Adet)</p>
-                <p className="cart-item-quantity">Beden: {product.size}</p>
-                <p className="cart-item-price">{product.price.toFixed(2)}₺</p>
-                <p className="cart-item-total">Toplam: {(product.price * product.quantity).toFixed(2)}₺</p>
+                <p className="cart-item-quantity">Beden:{product.size}</p>
+                <p className="cart-item-price">Ürün Fiyat:{product.price.toFixed(2)}₺</p>
+                <p className="cart-item-total">Toplam Fiyat:{(product.price * product.quantity).toFixed(2)}₺</p>
                 <div className="quantity-controls">
                   <button onClick={() => dispatch(decrementQuantity(product.id))}>-</button>
                   <span>{product.quantity}</span>
@@ -38,8 +39,12 @@ function CardPage() {
             </div>
           ))
         )}
-        {cartProduct.length > 0 && <p className="total-amount">Toplam Fiyat: {totalAmount}₺</p>}
+        {cartProduct.length > 0 && <p className="total-amount">Toplam:{totalAmount.toFixed(2)}₺</p>}
+        <div className="total-amount">
+              <button className="checkout-button">Sepeti Al</button>
+            </div>
       </div>
+     
     </Drawer>
   );
 }

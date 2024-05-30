@@ -509,7 +509,7 @@ input:focus {
 
 .product-details .price {
   font-size: 20px;
-  color: #28a745;
+  color: rgb(120, 40, 40);
   margin-bottom: 10px;
 }
 
@@ -527,21 +527,34 @@ input:focus {
 .quantity-selection label {
   font-size: 16px;
   margin-right: 10px;
+  
 }
 
 .size-selection select {
   padding: 5px;
   font-size: 16px;
 }
+#size{
+  border:solid;
+  border-radius: 5px;
+  border-color: grey;
+  
+}
 
 .quantity-selection button {
-  background-color: #007bff;
+  background-color: rgb(202, 83, 83);
   color: white;
   border: none;
+  border-radius: 7px;
   padding: 5px 10px;
   font-size: 16px;
   margin: 0 5px;
   cursor: pointer;
+
+}
+
+.quantity-selection button:hover{
+  background-color: rgb(120, 40, 40);
 }
 
 .quantity-selection button:disabled {
@@ -552,10 +565,18 @@ input:focus {
 .quantity-selection span {
   font-size: 16px;
   margin: 0 10px;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgb(206, 159, 5);
+  transition: background-color 0.3s, color 0.3s;
+  
 }
 
+
 .add-to-cart {
-  background-color: #28a745;
+  background-color:  rgb(202, 83, 83);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -565,6 +586,6 @@ input:focus {
 }
 
 .add-to-cart:hover {
-  background-color: #218838;
+  background-color:  rgb(120, 40, 40);
 }
 
