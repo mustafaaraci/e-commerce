@@ -50,7 +50,7 @@ export const cartSlice = createSlice({
   },
   incrementQuantity: (state, action) => {
     const product = state.cartProduct.find((product) => product.id === action.payload);
-    if (product) {
+    if (product && product.quantity < 5) {
         product.quantity += 1;
         writeFromCartToStorage(state.cartProduct);
     }

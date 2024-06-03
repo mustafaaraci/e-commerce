@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import PersonIcon from "@mui/icons-material/Person";
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlined';
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawer } from "../redux/cartSlice";
 
 
 
-function Header(product) {
-  
-  const [filteredProducts, setFilteredProducts] = useState(product);
- // console.log(product,"ürünler");
- const [searchTerm, setSearchTerm] = useState("");
+function Header() {
+  const {products} =useSelector((store)=>store.product);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  //console.log(products,"ürünler");
+  const [searchTerm, setSearchTerm] = useState("");
   const {cartProduct} =useSelector((store)=>store.cart);
   
     const [theme,setTheme] = useState(true);
@@ -36,19 +36,21 @@ function Header(product) {
     }
     
 
-    const handleSearch = (e) => {
-      const term = e.target.value;
-      
-      setSearchTerm(term);
-      if (term) {
-          const filtered = product.filter(producted =>
-              producted.name.toLowerCase().includes(term.toLowerCase())
-          );
-          setFilteredProducts(filtered);
+    useEffect(() => {
+      if (searchTerm) {
+        const filtered = products.filter(product =>
+          product.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredProducts(filtered);
       } else {
-          setFilteredProducts(product);
+        setFilteredProducts(products);
       }
-  };
+    }, [searchTerm, products]);
+
+
+    const handleSearch = (e) => {
+      setSearchTerm(e.target.value);
+    };
     
   return (
    <div className="navbar">
@@ -56,7 +58,7 @@ function Header(product) {
     <img
         className="logo"
         src="./src/images/moon.png"
-        style={{width:60,height:60}} onClick={()=> navigate("/")}/>
+        style={{width:60,height:60}} onClick={()=> navigate("/")}  alt="Logo"/>
         <div className="navbar-mid">
             <ul className="header-mid">
                 <li>Erkek</li>
@@ -76,9 +78,10 @@ function Header(product) {
   />
   <SearchIcon className="search-icon"/>
 </div>
- <div className="cart-icon-wrapper">
-            <ShoppingBasketIcon className="basket-icon" onClick={()=> dispatch(setDrawer())}/>
-            { cartProduct.length >= 0 && (
+<div className="cart-icon-wrapper" onClick={() => dispatch(setDrawer())}>
+            <ShoppingBasketIcon className="basket-icon" />
+            <span className="cart-text">Sepet</span>
+            {cartProduct.length >= 0 && (
               <span className="cart-count">{cartProduct.length}</span>
             )}
           </div>

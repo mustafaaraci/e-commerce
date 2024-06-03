@@ -1,86 +1,126 @@
-/* Genel stil ayarları */
+/* login.css */
 
-  .signinpage {
-    border-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 100px;
-   
-  }
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7f6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-container {
+  margin-top:100px;
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  height:450px;
+  background-color: #ebbd67;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px; 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-header {
+  text-align: center;
+  background-color:rgb(120, 40, 40);
+  color: white;
+  padding: 1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+}
+
+.card-body {
+  padding: 1.5rem;
+  width: 100%;
+}
+
+.input-groups {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.input-groups label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.input-groups input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-groups input:focus {
+  border-color:  rgb(151, 50, 50);
+  outline: none;
+  box-shadow: 0 0 5px rgb(120, 40, 40);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.checkbox input {
+  margin-right: 0.5rem;
+}
+
+.signin-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: rgb(151, 50, 50);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.signin-btn:hover {
+  background-color:rgb(120, 40, 40);
+}
+
+.card-footer {
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+ 
+}
+
+.card-footer .text-muted {
+  color: #6c757d;
+}
+
+.card-footer a {
+  color: #4a90e2;
+  text-decoration: none;
   
-  /* Başlık ve açıklama */
-  .signinpage .fw-bold {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .signinpage .text-muted {
-    color: #6c757d !important;
-    margin-bottom: 2rem;
-  }
-  
-  /* Form kontrol stilleri */
-  .signinpage .form-control {
-    background-color: #f7f7f7;
-    border: 1px solid #ced4da;
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .signinpage .form-control:focus {
-    border-color: #495057;
-    background-color: #fff;
-    box-shadow: none;
-  }
-  
-  /* Buton stilleri */
-  .signinpage .signin-btn {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.25rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signinpage .signin-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .signinpage .google-btn {
-    background-color: #dd4b39;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.25rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signinpage .google-btn:hover {
-    background-color: #c23321;
-  }
-  
-  .signinpage .facebook-btn {
-    background-color: #3b5998;
-    border: none;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.25rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .signinpage .facebook-btn:hover {
-    background-color: #2d4373;
-  }
-  
-  /* Diğer stiller */
-  .signinpage .my-4 {
-    border-top: 1px solid #dee2e6 !important;
-    margin-top: 1.5rem !important;
-    margin-bottom: 1.5rem !important;
-  }
-  
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+  color: #136da1;
+
+}

@@ -1,62 +1,44 @@
 import React from 'react';
 import "../css/Login.css";
-import { Link } from 'react-router-dom';
-import {
-    MDBBtn,
-    MDBContainer,
-    MDBRow,
-    MDBCol,
-    MDBCard,
-    MDBCardBody,
-    MDBInput,
-    MDBIcon,
-    MDBCheckbox
-  }
-  from 'mdb-react-ui-kit';
 
 
 function Login() {
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Placeholder for form submission logic
+    alert('Form submitted!');
+  };
   return (
-    
-    <MDBContainer fluid>
-    <MDBRow className='d-flex justify-content-center align-items-center h-100'>
-      <MDBCol col='12'>
-        <MDBCard className='bg-white my-5 mx-auto signinpage' style={{borderRadius: '1rem', maxWidth: '500px'}}>
-          <MDBCardBody className='p-5 w-100 d-flex flex-column'>
-  
-            <h2 className="fw-bold mb-2 text-center">Sign in</h2>
-            <p className="text-muted mb-3">Please enter your login and password!</p>
-  
-            <MDBInput wrapperClass='mb-4 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
-            <MDBInput wrapperClass='mb-4 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
-  
-            <MDBCheckbox name='flexCheck' id='flexCheckDefault' className='mb-4' label='Remember password' />
-  
-            <MDBBtn size='lg' className="signin-btn">
-              Login
-            </MDBBtn>
-  
-            <hr className="my-4" />
-  
-            <MDBBtn className="mb-2 w-100 google-btn" size="lg">
-              <MDBIcon fab icon="google" className="mx-2"/>
-              Sign in with Google
-            </MDBBtn>
-  
-            <MDBBtn className="mb-4 w-100 facebook-btn" size="lg">
-              <MDBIcon fab icon="facebook-f" className="mx-2"/>
-              Sign in with Facebook
-            </MDBBtn>
-  
-          </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
-    </MDBRow>
-  </MDBContainer>
-  
-  
-  )
+ <>
+ <div className="login-container" id='login-container'>
+      <div className="login-card">
+        <div className="card-header">
+          <h2>Giriş Yap</h2>
+        </div>
+        <div className="card-body">
+          <form onSubmit={handleSubmit}>
+            <div className="input-groups">
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div className="input-groups">
+              <label htmlFor="password">Şifre</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <div className="checkbox">
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              <label htmlFor="rememberMe">Beni hatırla</label>
+            </div>
+            <button type="submit" className="signin-btn">Giriş</button>
+          </form>
+        </div>
+        <div className="card-footer">
+          <p className="text-muted">Hesabınız yok mu? <a href="#">Hesap Oluştur</a></p>
+        </div>
+      </div>
+    </div>
+ </>
+  );
 }
 
 export default Login;

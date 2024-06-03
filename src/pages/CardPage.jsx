@@ -5,6 +5,7 @@ import { calculateToCart, setDrawer,incrementQuantity,
      decrementQuantity, removeProductFromCart } from "../redux/cartSlice";
 import "../css/CardPage.css";  
 import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 function CardPage() {
   const { cartProduct, drawer,totalAmount } = useSelector((store) => store.cart);
@@ -17,9 +18,9 @@ function CardPage() {
   return (
     <Drawer anchor="right" onClose={() => dispatch(setDrawer())} open={drawer} className="drawer">
       <div className="cart-container">
-        <h2 className="cart-title">Sepetim</h2>
+        <h2 className="cart-title">Sepetim<ShoppingCartIcon style={{fontSize:40}}/></h2>
         {cartProduct.length === 0 ? (
-          <p className="empty-cart">Sepette ürününüz bulunmamaktadır <RemoveShoppingCartIcon/></p>
+          <p className="empty-cart">Sepette ürün bulunmamaktadır <RemoveShoppingCartIcon/></p>
          ) : (
           cartProduct.map((product) => (
             <div key={product.id} className="cart-item">
@@ -40,9 +41,9 @@ function CardPage() {
           ))
         )}
         {cartProduct.length > 0 && <p className="total-amount">Toplam:{totalAmount.toFixed(2)}₺</p>}
-        <div className="total-amount">
+        {cartProduct.length > 0 && <div className="total-amount">
               <button className="checkout-button">Sepeti Al</button>
-            </div>
+            </div>}
       </div>
      
     </Drawer>

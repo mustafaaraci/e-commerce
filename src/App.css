@@ -50,7 +50,7 @@ body{
   transition: color 0.3s ease;
   background-color:white;
   color:rgb(151, 50, 50);
-  transform: scale(1.1);
+  transform: scale(1.02);
 
 }
 
@@ -76,6 +76,22 @@ input:focus {
   border-color:rgb(151, 50, 50); 
   outline: none; 
 }
+.cart-text {
+  margin-left: 5px;
+  font-weight: bold;
+  color: rgb(151, 50, 50)
+}
+.cart-text:hover{
+  transform: scale(1.02);
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+.cart-icon-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
 
 /* login icon group */
 .login-container {
@@ -114,7 +130,7 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
  
   
 }
@@ -142,6 +158,7 @@ input:focus {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   cursor: pointer;
   position:relative;
+  box-shadow: 0 0 5px rgb(120, 40, 40);
  
 }
 
@@ -299,14 +316,15 @@ input:focus {
   align-self: flex-end;
   color: rgb(151, 50, 50); 
   padding: 5px 10px;
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 25px;
+  margin-top: 20px;
   font-weight: bold; 
   
 }
 
 /* Footer */
 .container-footer {
+  
   border-radius: 10px;
   background-color: #c9c6c6;
   padding: 20px 0;
@@ -445,8 +463,8 @@ input:focus {
 
 .cart-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: -12px;
+  right: -14px;
   background-color: rgb(255, 255, 255);
   color: rgb(202, 83, 83);
   border-radius: 50%;
@@ -508,7 +526,7 @@ input:focus {
 }
 
 .product-details .price {
-  font-size: 20px;
+  font-size: 35px;
   color: rgb(120, 40, 40);
   margin-bottom: 10px;
 }
