@@ -135,7 +135,11 @@ input:focus {
   
 }
 .product-list{
-  margin-top: 110px;;
+  margin-top: 110px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
 }
 
 

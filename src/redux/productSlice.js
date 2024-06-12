@@ -5,7 +5,8 @@ const initialState = {
     products:[],
     selectedProduct:{},
     loading:false,
-    status:'idle'
+    status:'idle',
+    searchFilter:''
 }
 
 export const URL = "https://fakestoreapi.com";
@@ -20,12 +21,17 @@ export const getAllProducts = createAsyncThunk("getAllProducts",async()=>{
 //     return response.data;
 // });
 
+
+
 export const productSlice = createSlice({
     name:"product",
     initialState,
     reducers:{
         setSelectedProduct: (state,action) =>{
             state.selectedProduct = action.payload;
+        },
+        setSearchFilter:(state,action) =>{
+            state.searchFilter = action.payload
         }
 
     },
@@ -44,22 +50,9 @@ export const productSlice = createSlice({
             state.loading = false;
         });
 
-        //  builder.addCase(getProductDetailById.pending,(state)=>{
-        //     state.status ="loading"
-        //     state.loading=true;
-        //  })
-        // builder.addCase(getProductDetailById.fulfilled,(state)=>{
-        //     state.selectedProduct =action.payload;
-        //     state.status ="succeeded"
-        //     state.loading =false;
-        // })
-        // builder.addCase(getProductDetailById.rejected, (state) => {
-        //     state.status = "failed";
-        //     state.loading = false;
-        // });
-        }
+       }
 
 });
 
-export const {setSelectedProduct} = productSlice.actions
+export const {setSelectedProduct,setSearchFilter} = productSlice.actions
 export default productSlice.reducer

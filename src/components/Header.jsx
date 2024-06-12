@@ -7,16 +7,17 @@ import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlin
 import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawer } from "../redux/cartSlice";
+import { setSearchFilter} from "../redux/productSlice";
 
 
 
 function Header() {
-  const {products} =useSelector((store)=>store.product);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const {products,searchFilter} =useSelector((store)=>store.product);
   //console.log(products,"ürünler");
-  const [searchTerm, setSearchTerm] = useState("");
-  const {cartProduct} =useSelector((store)=>store.cart);
+ const {cartProduct} =useSelector((store)=>store.cart);
   
+    const [filterProducts,setFilterProducts] = useState(products);
+    
     const [theme,setTheme] = useState(true);
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -37,22 +38,24 @@ function Header() {
     
 
     useEffect(() => {
-      if (searchTerm) {
-        const filtered = products.filter(product =>
-          product.title.toLowerCase().includes(searchTerm.toLowerCase())
+      if (searchFilter) {
+        const filteredProducts = products.filter(product =>
+          product.title.toLowerCase().includes(searchFilter.toLowerCase())
         );
-        setFilteredProducts(filtered);
+        setFilterProducts(filteredProducts);
       } else {
-        setFilteredProducts(products);
+        setFilterProducts(products);
       }
-    }, [searchTerm, products]);
+    }, [searchFilter, products]);
 
 
     const handleSearch = (e) => {
-      setSearchTerm(e.target.value);
-    };
+      dispatch(setSearchFilter(e.target.value));
+  };
+  
     
   return (
+    <>
    <div className="navbar">
     <div className="navbar-content">
     <img
@@ -73,7 +76,7 @@ function Header() {
     placeholder="Aradığınız ürün veya markayı yazınız" 
     className="search-bar" 
     style={{ width: 300 }} 
-    value={searchTerm}
+    value={searchFilter}
     onChange={handleSearch}
   />
   <SearchIcon className="search-icon"/>
@@ -99,8 +102,12 @@ function Header() {
         </div>
         
     </div>
-    
-</div>
+  </div>
+
+                
+        
+  </>
+
 
   );
 }
