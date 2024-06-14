@@ -124,3 +124,15 @@ body, html {
   color: #136da1;
 
 }
+
+.password-group {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(20%);
+  cursor: pointer;
+}
