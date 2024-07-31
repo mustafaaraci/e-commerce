@@ -61,7 +61,7 @@ function Header() {
     <img
         className="logo"
         src="./src/images/moon.png"
-        style={{width:60,height:60}} onClick={()=> navigate("/")}  alt="Logo"/>
+        style={{width:60,height:60}} onClick={()=> navigate("/home")}  alt="Logo"/>
         <div className="navbar-mid">
             <ul className="header-mid">
                 <li>Erkek</li>

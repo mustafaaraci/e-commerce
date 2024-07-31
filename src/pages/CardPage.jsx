@@ -23,19 +23,19 @@ function CardPage() {
           <p className="empty-cart">Sepette ürün bulunmamaktadır <RemoveShoppingCartIcon/></p>
          ) : (
           cartProduct.map((product) => (
-            <div key={product.id} className="cart-item">
-              <img src={product.image} alt="" className="cart-item-image" />
+            <div key={`${product.id}-${product.size}`}  className="cart-item"> 
+            <img src={product.image} alt="" className="cart-item-image" />
               <div className="cart-item-details">
                 <p className="cart-item-title">{product.title} ({product.quantity} Adet)</p>
                 <p className="cart-item-quantity">Beden:{product.size}</p>
                 <p className="cart-item-price">Ürün Fiyat:{product.price.toFixed(2)}₺</p>
                 <p className="cart-item-total">Toplam Fiyat:{(product.price * product.quantity).toFixed(2)}₺</p>
                 <div className="quantity-controls">
-                  <button onClick={() => dispatch(decrementQuantity(product.id))}>-</button>
+                  <button onClick={() => dispatch(decrementQuantity({ id: product.id, size: product.size }))}>-</button>
                   <span>{product.quantity}</span>
-                  <button onClick={() => dispatch(incrementQuantity(product.id))}>+</button>
+                  <button onClick={() => dispatch(incrementQuantity({ id: product.id, size: product.size }))}>+</button>
                 </div>
-                <button className="remove-item" onClick={() => dispatch(removeProductFromCart(product.id))}>Ürünü Çıkar</button>
+                <button className="remove-item" onClick={() => dispatch(removeProductFromCart({ id: product.id, size: product.size }))}>Ürünü Çıkar</button>
               </div>
             </div>
           ))

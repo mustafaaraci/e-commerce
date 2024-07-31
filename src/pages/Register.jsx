@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import "../css/Register.css";
 
 function Register() {
 
@@ -36,11 +36,8 @@ function Register() {
             </div>
             <button type="submit" className="signin-btn">Kayıt Ol</button>
           </form>
-        </div>
-        <div className="card-footer">
-          <p className="text-muted">Zaten bir hesabınız var mı? <Link to="/Login">Giriş Yap</Link></p>
-        </div>
-      </div>
+         </div>
+       </div>
     </div>
   </>
   )

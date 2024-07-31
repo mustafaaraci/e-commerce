@@ -24,7 +24,7 @@ export const cartSlice = createSlice({
     initialState,
     reducers:{
         addProductToCart: (state,action)=>{
-    const findProduct =   state.cartProduct && state.cartProduct.find((product)=> product.id === action.payload.id)
+    const findProduct =   state.cartProduct && state.cartProduct.find((product)=> product.id === action.payload.id && product.size === action.payload.size)
 
     if(findProduct){
         //önceden eklenen ürünleri çıkartıyoruz.sepetteki ürünlerimiz yenileniyor.
@@ -49,21 +49,24 @@ export const cartSlice = createSlice({
     );
   },
   incrementQuantity: (state, action) => {
-    const product = state.cartProduct.find((product) => product.id === action.payload);
+    const product = state.cartProduct.find((product) => product.id === action.payload.id && product.size === action.payload.size);
     if (product && product.quantity < 5) {
         product.quantity += 1;
         writeFromCartToStorage(state.cartProduct);
     }
 },
 decrementQuantity: (state, action) => {
-    const product = state.cartProduct.find((product) => product.id === action.payload);
+    const product = state.cartProduct.find((product) => product.id === action.payload.id && product.size === action.payload.size);
     if (product && product.quantity > 1) {
         product.quantity -= 1;
         writeFromCartToStorage(state.cartProduct);
     }
 },
 removeProductFromCart: (state, action) => {
-    state.cartProduct = state.cartProduct.filter((product) => product.id !== action.payload);
+    state.cartProduct = state.cartProduct.filter(
+      (product) => !(product.id === action.payload.id && product.size === action.payload.size)
+    );
+    
     writeFromCartToStorage(state.cartProduct);
 },
         

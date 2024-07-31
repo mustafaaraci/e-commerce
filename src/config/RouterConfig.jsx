@@ -12,7 +12,7 @@ function RouterConfig() {
   return (
  <Routes>
     <Route path="/" element = {<Home/>}/>
-    <Route path="/anasayfa" element = {<Home/>}/>
+    <Route path="/home" element = {<Home/>}/>
     <Route path="/product-detail/:id" element = {<DetailPage/>}/>
     <Route path="/Login" element = {<Login/>}/>
     <Route path="/register" element={<Register />} />
