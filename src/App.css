@@ -17,6 +17,12 @@ body{
 }
 
 
+.logo-right:hover{
+  transform: scale(1.1);
+  transition: color 0.5s ease, transform 0.5s ease;
+}
+
+
 
 .header{
   list-style: none;

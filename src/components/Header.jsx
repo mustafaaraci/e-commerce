@@ -10,6 +10,7 @@ import { setDrawer } from "../redux/cartSlice";
 import { setSearchFilter,setCategoryFilter} from "../redux/productSlice";
 
 
+
 function Header() {
   const {products,searchFilter,categoryFilter} =useSelector((store)=>store.product);
   //console.log(products,"ürünler");
@@ -71,6 +72,10 @@ function Header() {
         className="logo"
         src="./src/images/moon.png"
         style={{width:60,height:60}} onClick={()=> navigate("/home")}  alt="Logo"/>
+        <p className="logo-right" style={{fontSize:20,zIndex:1,fontWeight: 'bold', letterSpacing: '2px',cursor:'pointer'}}
+        onClick={()=> navigate("/home")}
+        >moon</p>
+       
         <div className="navbar-mid">
             <ul className="header-mid">
             <li onClick={() => handleCategoryClick("erkek")}>Erkek</li>
