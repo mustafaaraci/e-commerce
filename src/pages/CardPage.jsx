@@ -28,7 +28,7 @@ function CardPage() {
               <div className="cart-item-details">
                 <p className="cart-item-title">{product.title} ({product.quantity} Adet)</p>
                 <p className="cart-item-quantity">Beden:{product.size}</p>
-                <p className="cart-item-price">Ürün Fiyat:{product.price.toFixed(2)}₺</p>
+                <p className="cart-item-price">Ürün Fiyat:{product.price ? product.price.toFixed(2) : "0.00"}₺</p>
                 <p className="cart-item-total">Toplam Fiyat:{(product.price * product.quantity).toFixed(2)}₺</p>
                 <div className="quantity-controls">
                   <button onClick={() => dispatch(decrementQuantity({ id: product.id, size: product.size }))}>-</button>

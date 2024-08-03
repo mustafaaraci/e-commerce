@@ -6,7 +6,8 @@ const initialState = {
     selectedProduct:{},
     loading:false,
     status:'idle',
-    searchFilter:''
+    searchFilter:'',
+    categoryFilter: ''
 }
 
 export const URL = "https://fakestoreapi.com";
@@ -32,6 +33,12 @@ export const productSlice = createSlice({
         },
         setSearchFilter:(state,action) =>{
             state.searchFilter = action.payload
+        },
+        setCategoryFilter: (state, action) => {
+            state.categoryFilter = action.payload;
+            state.filterProducts = state.products.filter(product => 
+                product.category.toLowerCase() === action.payload.toLowerCase()
+            );
         }
 
     },
@@ -54,5 +61,8 @@ export const productSlice = createSlice({
 
 });
 
-export const {setSelectedProduct,setSearchFilter} = productSlice.actions
+export const {
+    setSelectedProduct,
+    setSearchFilter, 
+    setCategoryFilter} = productSlice.actions
 export default productSlice.reducer

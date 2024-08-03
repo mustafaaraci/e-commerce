@@ -23,22 +23,41 @@ export const cartSlice = createSlice({
     name:"cart",
     initialState,
     reducers:{
-        addProductToCart: (state,action)=>{
-    const findProduct =   state.cartProduct && state.cartProduct.find((product)=> product.id === action.payload.id && product.size === action.payload.size)
 
-    if(findProduct){
-        //önceden eklenen ürünleri çıkartıyoruz.sepetteki ürünlerimiz yenileniyor.
-        const extructedProduct = state.cartProduct.filter((product)=>product.id !== action.payload.id);
-        findProduct.quantity += action.payload.quantity;
-        state.cartProduct = [...extructedProduct,findProduct];
-        writeFromCartToStorage(state.cartProduct);
+//         addProductToCart: (state,action)=>{
+//     const findProduct =   state.cartProduct && state.cartProduct.find((product)=> product.id === action.payload.id && product.size === action.payload.size)
 
-    }else{
-        //sonradan aynı ürünü eklersek
-        state.cartProduct= [...state.cartProduct,action.payload];
-        writeFromCartToStorage(state.cartProduct);
+//     if(findProduct){
+//         //önceden eklenen ürünleri çıkartıyoruz.sepetteki ürünlerimiz yenileniyor.
+//         const extructedProduct = state.cartProduct.filter((product)=>product.id !== action.payload.id);
+//         findProduct.quantity += action.payload.quantity;
+//         state.cartProduct = [...extructedProduct,findProduct];
+//         writeFromCartToStorage(state.cartProduct);
+
+//     }else{
+//         //sonradan aynı ürünü eklersek
+//         state.cartProduct= [...state.cartProduct,action.payload];
+//         writeFromCartToStorage(state.cartProduct);
+//     }
+
+//  }
+ 
+addProductToCart: (state, action) => {
+    const findProduct = state.cartProduct.find(
+        (product) => product.id === action.payload.id && product.size === action.payload.size
+    );
+
+    if (findProduct) {
+        if (findProduct.quantity + action.payload.quantity <= 5) {
+            findProduct.quantity += action.payload.quantity;
+        } else {
+            findProduct.quantity = 5;
+        }
+    } else {
+        state.cartProduct.push(action.payload);
     }
- },
+    writeFromCartToStorage(state.cartProduct);
+},
  setDrawer:  (state)=>{
     state.drawer = !state.drawer
  },
@@ -74,5 +93,11 @@ removeProductFromCart: (state, action) => {
     }
 })
 
-export const {addProductToCart,setDrawer,calculateToCart,incrementQuantity,decrementQuantity,removeProductFromCart} = cartSlice.actions;
+export const {
+    addProductToCart,
+    setDrawer,
+    calculateToCart,
+    incrementQuantity,
+    decrementQuantity,
+    removeProductFromCart} = cartSlice.actions;
 export default  cartSlice.reducer;

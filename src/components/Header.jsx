@@ -7,12 +7,11 @@ import WbIncandescentOutlinedIcon from '@mui/icons-material/WbIncandescentOutlin
 import {  useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setDrawer } from "../redux/cartSlice";
-import { setSearchFilter} from "../redux/productSlice";
-
+import { setSearchFilter,setCategoryFilter} from "../redux/productSlice";
 
 
 function Header() {
-  const {products,searchFilter} =useSelector((store)=>store.product);
+  const {products,searchFilter,categoryFilter} =useSelector((store)=>store.product);
   //console.log(products,"ürünler");
  const {cartProduct} =useSelector((store)=>store.cart);
   
@@ -36,6 +35,7 @@ function Header() {
 
     }
     
+    let filteredProducts = products;
 
     useEffect(() => {
       if (searchFilter) {
@@ -46,13 +46,22 @@ function Header() {
       } else {
         setFilterProducts(products);
       }
-    }, [searchFilter, products]);
+      if (categoryFilter) {
+        filteredProducts = filteredProducts.filter(product =>
+          product.category.toLowerCase() === categoryFilter.toLowerCase() //yeni durum
+        );
+      }
+    }, [searchFilter, products,categoryFilter]);
 
 
     const handleSearch = (e) => {
       dispatch(setSearchFilter(e.target.value));
   };
-  
+  const handleCategoryClick = (category) => {
+    dispatch(setCategoryFilter(category));
+    navigate(`/${category}`);
+  };
+
     
   return (
     <>
@@ -64,9 +73,9 @@ function Header() {
         style={{width:60,height:60}} onClick={()=> navigate("/home")}  alt="Logo"/>
         <div className="navbar-mid">
             <ul className="header-mid">
-                <li>Erkek</li>
-                <li>Kadın</li>
-                <li>Outlet Ürünler</li>
+            <li onClick={() => handleCategoryClick("erkek")}>Erkek</li>
+              <li onClick={() => handleCategoryClick("kadin")}>Kadın</li>
+              <li onClick={() => handleCategoryClick("outlet")}>Outlet Ürünler</li>
             </ul>
         </div>
         <div className="navbar-right">
